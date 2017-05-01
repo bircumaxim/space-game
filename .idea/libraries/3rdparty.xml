@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="3rdparty">
+    <ANNOTATIONS>
+      <root url="file:///usr/lib/lwjgl/lwjgl-2.8.4/doc/3rdparty" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file:///usr/lib/lwjgl/lwjgl-2.8.4/doc/3rdparty" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file:///usr/lib/lwjgl/lwjgl-2.8.4/doc/3rdparty" />
+    </JAVADOC>
+    <NATIVE>
+      <root url="file:///usr/lib/lwjgl/lwjgl-2.8.4/doc/3rdparty" />
+    </NATIVE>
+    <SOURCES>
+      <root url="file:///usr/lib/lwjgl/lwjgl-2.8.4/doc/3rdparty" />
+    </SOURCES>
+    <jarDirectory url="file:///usr/lib/lwjgl/lwjgl-2.8.4/doc/3rdparty" recursive="false" />
+    <jarDirectory url="file:///usr/lib/lwjgl/lwjgl-2.8.4/doc/3rdparty" recursive="false" type="SOURCES" />
+  </library>
+</component>

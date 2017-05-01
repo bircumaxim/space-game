@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="lwjgl_util_applet">
+    <CLASSES>
+      <root url="jar:///usr/lib/lwjgl/lwjgl-2.8.4/applet/advance/lwjgl_util_applet.jar!/" />
+      <root url="jar:///usr/lib/lwjgl/lwjgl-2.8.4/applet/advance/lzma.jar!/" />
+      <root url="jar:///usr/lib/lwjgl/lwjgl-2.8.4/applet/basic/jinput.jar!/" />
+      <root url="jar:///usr/lib/lwjgl/lwjgl-2.8.4/applet/basic/lwjgl_util_applet.jar!/" />
+      <root url="jar:///usr/lib/lwjgl/lwjgl-2.8.4/applet/basic/lwjgl_applet.jar!/" />
+      <root url="jar:///usr/lib/lwjgl/lwjgl-2.8.4/applet/basic/lwjgl_util.jar!/" />
+      <root url="jar:///usr/lib/lwjgl/lwjgl-2.8.4/applet/basic/lwjgl-debug.jar!/" />
+      <root url="jar:///usr/lib/lwjgl/lwjgl-2.8.4/applet/basic/lwjgl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
