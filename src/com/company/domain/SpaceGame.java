@@ -1,14 +1,14 @@
 package com.company.domain;
 
-import com.company.domain.core.Drawer;
 import com.company.domain.core.GameObject;
 import com.company.domain.models.TextureKey;
 import com.company.presentation.AudioPlayerImp;
 import com.company.presentation.DrawerImpl;
 
 import java.awt.*;
-import java.util.*;
-import java.util.List;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -46,7 +46,7 @@ public class SpaceGame implements Game {
     private Point getRandomPositionForEnemy() {
         Random rand = new Random();
         int y = window.getHeight();
-        int x = rand.nextInt(window.getWidth() - 100) + 0;
+        int x = rand.nextInt(window.getWidth() - 100);
         return new Point(x, y);
     }
 
