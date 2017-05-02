@@ -14,14 +14,14 @@ import java.util.HashMap;
  */
 public class TextureMng {
     private static TextureMng instance = new TextureMng();
-    public static TextureMng getInstance() {
-        return instance;
-    }
-
     private static HashMap<TextureKey, Texture> loadedTextures = new HashMap<>();
 
     private TextureMng() {
 
+    }
+
+    public static TextureMng getInstance() {
+        return instance;
     }
 
     public Texture loadTexture(TextureKey textureKey) {

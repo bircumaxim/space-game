@@ -3,7 +3,6 @@ package com.company.presentation.utils;
 import org.newdawn.slick.opengl.Texture;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL11.glPopMatrix;
 
 /**
  * Created by max on 5/1/17.
@@ -37,10 +36,14 @@ public class Draw {
             glTranslatef(x, y, 0);
             glBegin(GL_QUADS);
             {
-                glVertex2f(-width, -height); glTexCoord2f(0, 0);
-                glVertex2f(-height, height); glTexCoord2f(1, 0);
-                glVertex2f(width, height); glTexCoord2f(1, 1);
-                glVertex2f(width, -height); glTexCoord2f(0, 1);
+                glVertex2f(-width, -height);
+                glTexCoord2f(0, 0);
+                glVertex2f(-height, height);
+                glTexCoord2f(1, 0);
+                glVertex2f(width, height);
+                glTexCoord2f(1, 1);
+                glVertex2f(width, -height);
+                glTexCoord2f(0, 1);
             }
             glEnd();
 

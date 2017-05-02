@@ -3,7 +3,6 @@ package com.company.domain.core;
 import com.company.domain.Window;
 import com.company.domain.utils.RectangleUtils;
 
-import javax.swing.text.Position;
 import java.awt.*;
 
 /**
@@ -57,11 +56,11 @@ public abstract class GameObject {
         return window.getWindowRectangle().contains(RectangleUtils.getRectFromGameObject(this));
     }
 
-    public void setAlive(boolean isAlive) {
-        this.isAlive = isAlive;
-    }
-
     public boolean isAlive() {
         return isAlive;
+    }
+
+    public void setAlive(boolean isAlive) {
+        this.isAlive = isAlive;
     }
 }

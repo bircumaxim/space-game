@@ -7,5 +7,6 @@ import com.company.domain.models.AudioKey;
  */
 public interface AudioPlayer {
     public void play(AudioKey audioKey);
+
     public void stop(AudioKey audioKey);
 }

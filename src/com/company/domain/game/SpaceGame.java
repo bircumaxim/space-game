@@ -1,7 +1,9 @@
 package com.company.domain.game;
 
-import com.company.domain.*;
+import com.company.domain.Game;
+import com.company.domain.Window;
 import com.company.domain.core.GameObject;
+import com.company.domain.models.AudioKey;
 import com.company.domain.models.TextureKey;
 import com.company.presentation.AudioPlayerImp;
 import com.company.presentation.DrawerImpl;
@@ -16,13 +18,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * Created by max on 5/1/17.
  */
 public class SpaceGame implements Game {
-
-    private com.company.domain.Window window;
+    private Window window;
     private ConcurrentLinkedQueue<GameObject> enemies;
     private ConcurrentLinkedQueue<GameObject> fires;
     private Player player;
 
-    public SpaceGame(com.company.domain.Window window) {
+    public SpaceGame(Window window) {
         this.window = window;
         this.enemies = new ConcurrentLinkedQueue<>();
         this.fires = new ConcurrentLinkedQueue<>();
@@ -47,13 +48,18 @@ public class SpaceGame implements Game {
         fires.forEach(GameObject::render);
     }
 
-    private void updateOrDelete(ConcurrentLinkedQueue<GameObject> gameObjects) {
-        gameObjects.forEach(gameObject -> {
-            gameObject.update();
-            if (!gameObject.isAlive()) {
-                gameObjects.remove(gameObject);
-            }
-        });
+    private void restart() {
+        new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        enemies.clear();
+                        fires.clear();
+
+                        player.setAlive(true);
+                    }
+                }, 2000
+        );
     }
 
     private void checkCollision() {
@@ -68,6 +74,7 @@ public class SpaceGame implements Game {
             if (fire.collide(enemy)) {
                 fires.remove(fire);
                 enemies.remove(enemy);
+                AudioPlayerImp.getInstance().play(AudioKey.CRASH);
             }
         });
     }
@@ -76,27 +83,22 @@ public class SpaceGame implements Game {
         if (player.collide(enemy)) {
             player.setAlive(false);
 
-            restartTheGame();
+            restart();
         }
-    }
-
-    private void restartTheGame() {
-        new Timer().schedule(
-                new TimerTask() {
-                    @Override
-                    public void run() {
-                        enemies.clear();
-                        fires.clear();
-
-                        player.setAlive(true);
-                    }
-                }, 2000
-        );
     }
 
     private void drawBackground() {
         Rectangle rect = new Rectangle(0, 0, window.getWidth() * 2, window.getHeight() * 2);
         DrawerImpl.getInstance().drawWithTexture(rect, TextureKey.BACKGROUND);
+    }
+
+    private void updateOrDelete(ConcurrentLinkedQueue<GameObject> gameObjects) {
+        gameObjects.forEach(gameObject -> {
+            gameObject.update();
+            if (!gameObject.isAlive()) {
+                gameObjects.remove(gameObject);
+            }
+        });
     }
 
     private Point getRandomPositionForEnemy() {

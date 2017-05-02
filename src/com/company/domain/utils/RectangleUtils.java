@@ -8,6 +8,11 @@ import java.awt.*;
  * Created by max on 5/1/17.
  */
 public class RectangleUtils {
+
+    private RectangleUtils() {
+
+    }
+
     /**
      * Create a java Rectangular object for guve GameObject.
      *

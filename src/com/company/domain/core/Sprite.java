@@ -21,14 +21,14 @@ public abstract class Sprite extends GameObject {
     }
 
     public Sprite(Window window, Point position, Dimension dimension, TextureKey textureKey, Drawer drawer) {
-        super(window, position,dimension);
+        super(window, position, dimension);
         this.textureKey = textureKey;
         this.drawer = drawer;
     }
 
     @Override
     public void render() {
-        if(isAlive){
+        if (isAlive) {
             Rectangle rectangle = RectangleUtils.getRectFromGameObject(this);
             drawer.drawWithTexture(rectangle, textureKey);
         }

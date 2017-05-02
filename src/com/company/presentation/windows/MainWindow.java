@@ -43,7 +43,7 @@ public class MainWindow extends Window {
             glClear(GL_COLOR_BUFFER_BIT);
             glLoadIdentity();
 
-            if(game != null){
+            if (game != null) {
                 game.update();
                 game.render();
             }

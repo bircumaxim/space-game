@@ -5,5 +5,6 @@ package com.company.domain;
  */
 public interface Game {
     public void render();
+
     public void update();
 }

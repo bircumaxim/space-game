@@ -4,8 +4,9 @@ package com.company.domain.models;
  * Created by max on 5/2/17.
  */
 public enum AudioKey {
-    FIRE("fire","ogg"),
-    MOVING("moving", "ogg");
+    FIRE("fire", "ogg"),
+    MOVING("moving", "ogg"),
+    CRASH("crash", "ogg");
 
     private String name;
     private String format;

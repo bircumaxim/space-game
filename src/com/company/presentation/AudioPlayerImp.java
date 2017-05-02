@@ -19,7 +19,7 @@ public class AudioPlayerImp implements AudioPlayer {
     public void play(AudioKey audioKey) {
 
         Audio audio = AudioMng.getInstance().loadAudio(audioKey);
-        if(audio.isPlaying()){
+        if (audio.isPlaying()) {
             audio.stop();
         }
         audio.playAsSoundEffect(1.0f, 1.0f, false);
@@ -28,7 +28,7 @@ public class AudioPlayerImp implements AudioPlayer {
     @Override
     public void stop(AudioKey audioKey) {
         Audio audio = AudioMng.getInstance().loadAudio(audioKey);
-        if(audio.isPlaying()){
+        if (audio.isPlaying()) {
             audio.stop();
         }
     }

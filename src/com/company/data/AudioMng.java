@@ -13,15 +13,15 @@ import java.util.HashMap;
  * Created by max on 5/2/17.
  */
 public class AudioMng {
+    private static final HashMap<AudioKey, Audio> loadedAudios = new HashMap<>();
     private static AudioMng instance = new AudioMng();
-    public static AudioMng getInstance() {
-        return instance;
-    }
-
-    private static final HashMap<AudioKey, Audio> loadedAudios = new HashMap <>();
 
     private AudioMng() {
 
+    }
+
+    public static AudioMng getInstance() {
+        return instance;
     }
 
     public Audio loadAudio(AudioKey audioKey) {

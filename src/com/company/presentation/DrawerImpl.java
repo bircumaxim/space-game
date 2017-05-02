@@ -1,7 +1,7 @@
 package com.company.presentation;
 
 import com.company.data.TextureMng;
-import com.company.domain.core.*;
+import com.company.domain.core.Drawer;
 import com.company.domain.models.TextureKey;
 import com.company.presentation.utils.Draw;
 
@@ -12,11 +12,12 @@ import java.awt.*;
  */
 public class DrawerImpl implements Drawer {
     private static DrawerImpl instance = new DrawerImpl();
-    public static DrawerImpl getInstance() {
-        return instance;
-    }
 
     private DrawerImpl() {
+    }
+
+    public static DrawerImpl getInstance() {
+        return instance;
     }
 
     @Override
