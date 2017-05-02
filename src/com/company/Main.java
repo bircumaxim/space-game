@@ -2,7 +2,7 @@ package com.company;
 
 
 import com.company.domain.Game;
-import com.company.domain.SpaceGame;
+import com.company.domain.game.SpaceGame;
 import com.company.presentation.windows.MainWindow;
 
 public class Main {

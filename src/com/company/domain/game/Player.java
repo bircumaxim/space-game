@@ -1,7 +1,8 @@
-package com.company.domain;
+package com.company.domain.game;
 
 import com.company.domain.core.Drawer;
 import com.company.domain.core.AudioPlayer;
+import com.company.domain.core.GameObject;
 import com.company.domain.core.Sprite;
 import com.company.domain.models.AudioKey;
 import com.company.domain.models.Key;
@@ -10,15 +11,12 @@ import com.company.domain.utils.RectangleUtils;
 
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by max on 5/2/17.
  */
-public class Player extends Sprite {
-
-
+class Player extends Sprite {
     private AudioPlayer pLayer;
     private Drawer drawer;
 
@@ -28,41 +26,25 @@ public class Player extends Sprite {
 
     private boolean isFireAvailable;
 
-    private ConcurrentLinkedQueue<Fire> fires;
+    private ConcurrentLinkedQueue<GameObject> fires;
 
 
-    Player(Window window, AudioPlayer pLayer, Drawer drawer) {
-        super(window, new Point(window.getWidth() / 2, 100), PLAYER_SIZE, PLAYER_SIZE);
+    Player(com.company.domain.Window window, AudioPlayer pLayer, Drawer drawer, ConcurrentLinkedQueue<GameObject> fires) {
+        super(window, new Point(window.getWidth() / 2, 100), new Dimension(PLAYER_SIZE, PLAYER_SIZE), TextureKey.PLAYER, drawer);
         this.pLayer = pLayer;
         this.drawer = drawer;
+        this.fires = fires;
         this.isFireAvailable = true;
-
-        this.fires = new ConcurrentLinkedQueue<>();
     }
 
     @Override
     public void update() {
-        move();
-        if (window.isKeyDown(Key.KEY_SPACE) && isFireAvailable) {
-            fire();
-        }
-        fireUpdate();
-    }
-
-    private void fireUpdate() {
-        fires.forEach(fire -> {
-            fire.update();
-            if (!fire.isInWindow()) {
-                fires.remove(fire);
+        if(isAlive){
+            move();
+            if (window.isKeyDown(Key.KEY_SPACE) && isFireAvailable) {
+                fire();
             }
-        });
-    }
-
-    @Override
-    public void render() {
-        Rectangle rectangle = RectangleUtils.getRectFromGameObject(this);
-        drawer.drawWithTexture(rectangle, TextureKey.PLAYER);
-        fires.forEach(Fire::render);
+        }
     }
 
     private void fire() {
@@ -93,7 +75,7 @@ public class Player extends Sprite {
         }
     }
 
-    public void setFireAvailableAfter(long interval) {
+    private void setFireAvailableAfter(long interval) {
         new Timer().schedule(
                 new TimerTask() {
                     @Override

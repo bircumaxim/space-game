@@ -13,17 +13,20 @@ public abstract class GameObject {
     protected Window window;
     protected Point position;
     protected Dimension dimension;
+    protected boolean isAlive;
 
-    public GameObject(Window window, int width, int height) {
+    GameObject(Window window, Dimension dimension) {
         this.window = window;
         position = new Point(window.getWidth() / 2, window.getHeight() / 2);
-        dimension = new Dimension(width, height);
+        this.dimension = dimension;
+        isAlive = true;
     }
 
-    GameObject(Window window, Point position, int width, int height) {
+    GameObject(Window window, Point position, Dimension dimension) {
         this.window = window;
         this.position = position;
-        dimension = new Dimension(width, height);
+        this.dimension = dimension;
+        isAlive = true;
     }
 
     public Point getPosition() {
@@ -43,7 +46,7 @@ public abstract class GameObject {
     public boolean collide(GameObject gameObject) {
         Rectangle r1 = RectangleUtils.getRectFromGameObject(this);
         Rectangle r2 = RectangleUtils.getRectFromGameObject(gameObject);
-        return r1.intersects(r2);
+        return r1.intersects(r2) && isAlive;
     }
 
     public abstract void update();
@@ -52,5 +55,13 @@ public abstract class GameObject {
 
     public boolean isInWindow() {
         return window.getWindowRectangle().contains(RectangleUtils.getRectFromGameObject(this));
+    }
+
+    public void setAlive(boolean isAlive) {
+        this.isAlive = isAlive;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
     }
 }
