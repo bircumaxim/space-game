@@ -11,5 +11,7 @@
     <orderEntry type="library" name="lwjgl_util_applet" level="project" />
     <orderEntry type="library" name="java" level="project" />
     <orderEntry type="library" name="3rdparty" level="project" />
+    <orderEntry type="library" name="lwjgl" level="project" />
+    <orderEntry type="library" name="jogg-0.0.7" level="project" />
   </component>
 </module>

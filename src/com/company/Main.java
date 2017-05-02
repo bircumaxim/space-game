@@ -1,6 +1,9 @@
 package com.company;
 
-import com.company.game.SpaceGame;
+
+import com.company.domain.Game;
+import com.company.domain.SpaceGame;
+import com.company.presentation.windows.MainWindow;
 
 public class Main {
 
@@ -10,8 +13,11 @@ public class Main {
     private static String WINDOW_TITLE = "Space Shooter";
 
     public static void main(String[] args) {
-        Game spaceGame = new SpaceGame();
-        Window window = new Window(spaceGame, FPS, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
+        MainWindow window = new MainWindow(FPS, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
+
+        Game spaceGame = new SpaceGame(window);
+        window.setGame(spaceGame);
+
         window.run();
     }
 }

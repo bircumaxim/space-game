@@ -1,6 +1,9 @@
-package com.company;
+package com.company.presentation.windows;
 
+import com.company.domain.Game;
+import com.company.domain.Window;
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
@@ -9,26 +12,25 @@ import static org.lwjgl.opengl.GL11.*;
 /**
  * Created by max on 5/1/17.
  */
-class Window implements Runnable {
-
+public class MainWindow extends Window {
     private Game game;
-    private String windowTitle;
 
-    private int fps;
-    private int windowWidth;
-    private int windowHeight;
+    public MainWindow(int fps, int windowWidth, int windowHeight, String windowTitle) {
+        super(fps, windowWidth, windowHeight, windowTitle);
+    }
 
-    Window(Game game, int fps, int windowWidth, int windowHeight, String windowTitle) {
+    @Override
+    public boolean isKeyDown(String keyName) {
+        int keyIndex = Keyboard.getKeyIndex(keyName);
+        return Keyboard.isKeyDown(keyIndex);
+    }
+
+    public void setGame(Game game) {
         this.game = game;
-        this.fps = fps;
-        this.windowWidth = windowWidth;
-        this.windowHeight = windowHeight;
-        this.windowTitle = windowTitle;
     }
 
     @Override
     public void run() {
-        game.init();
         initDisplay();
         initGL();
         windowLoop();
@@ -41,11 +43,13 @@ class Window implements Runnable {
             glClear(GL_COLOR_BUFFER_BIT);
             glLoadIdentity();
 
-            game.update();
-            game.render();
+            if(game != null){
+                game.update();
+                game.render();
+            }
 
             Display.update();
-            Display.sync(fps); //Smth. like delta time to sing frames and to make rendering CPU independent.
+            Display.sync(fps);
         }
     }
 
@@ -57,6 +61,7 @@ class Window implements Runnable {
 
         glClearColor(0, 0, 0, 1); //black color
         glDisable(GL_DEPTH_TEST);
+        glEnable(GL_TEXTURE_2D);
     }
 
     private void clean() {
@@ -65,8 +70,8 @@ class Window implements Runnable {
 
     private void initDisplay() {
         try {
-            Display.setTitle(windowTitle);
-            Display.setDisplayMode(new DisplayMode(windowWidth, windowHeight));
+            Display.setTitle(title);
+            Display.setDisplayMode(new DisplayMode(width, height));
             Display.setVSyncEnabled(true);
             Display.create();
 
@@ -74,4 +79,5 @@ class Window implements Runnable {
             e.printStackTrace();
         }
     }
+
 }
