@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b138b5fb-22ac-4b56-b3b9-f776bd4e9800" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/domain/SpaceGame.java" afterPath="$PROJECT_DIR$/src/com/company/domain/SpaceGame.java" />
     </list>
     <ignored path="space-game.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -628,7 +627,7 @@
       <workItem from="1493657954307" duration="3337000" />
       <workItem from="1493661852224" duration="18961000" />
       <workItem from="1493683071803" duration="3005000" />
-      <workItem from="1493686126710" duration="11455000" />
+      <workItem from="1493686126710" duration="11493000" />
     </task>
     <task id="LOCAL-00001" summary="Started working on game engine.&#10;">
       <created>1493672174834</created>
@@ -672,11 +671,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493708550220</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Done with enemy game object.">
+      <created>1493747335530</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1493747335530</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38550000" />
+    <option name="totallyTimeSpent" value="38588000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="18" width="1366" height="750" extended-state="6" />
