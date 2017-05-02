@@ -15,48 +15,36 @@ public class Draw {
     }
 
     /**
-     *Draw a rectangular using a given texture.
+     * Draw a rectangular using a given texture.
      *
-     * @param x        position of the center of the rectangular on x axis.
-     * @param y        position of the center of the rectangular on y axis.
-     * @param width    rectangular with.
-     * @param height   rectangular height.
-     * @param texture  texture that will be used for drawing.
+     * @param x       position of the center of the rectangular on x axis.
+     * @param y       position of the center of the rectangular on y axis.
+     * @param width   rectangular with.
+     * @param height  rectangular height.
+     * @param texture texture that will be used for drawing.
      */
     public static void rectWithTexture(int x, int y, float width, float height, Texture texture) {
-        if (texture != null) {
-            texture.bind();
-        }
-        rect(x, y, width, height);
-    }
 
-    /**
-     * Draws a rectangular
-     *
-     * @param x        position of the center of the rectangular on x axis.
-     * @param y        position of the center of the rectangular on y axis.
-     * @param width    rectangular with.
-     * @param height   rectangular height.
-     */
-    public static void rect(int x, int y, float width, float height) {
-        glTranslatef(x, y, 0);
-
-        width /= 2;
-        height /= 2;
-
-        glBegin(GL_QUADS);
+        glPushMatrix();
         {
-            glVertex2f(-width, -height);
-            glTexCoord2f(0, 0);
-            glVertex2f(-width, height);
-            glTexCoord2f(1, 0);
-            glVertex2f(width, height);
-            glTexCoord2f(1, 1);
-            glVertex2f(width, -height);
-            glTexCoord2f(0, 1);
+            width /= 2;
+            height /= 2;
+
+            if (texture != null) {
+                texture.bind();
+            }
+
+            glTranslatef(x, y, 0);
+            glBegin(GL_QUADS);
+            {
+                glVertex2f(-width, -height); glTexCoord2f(0, 0);
+                glVertex2f(-height, height); glTexCoord2f(1, 0);
+                glVertex2f(width, height); glTexCoord2f(1, 1);
+                glVertex2f(width, -height); glTexCoord2f(0, 1);
+            }
+            glEnd();
+
         }
-        glEnd();
+        glPopMatrix();
     }
-
-
 }

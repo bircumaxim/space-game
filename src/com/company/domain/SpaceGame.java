@@ -25,10 +25,6 @@ public class SpaceGame implements Game {
     @Override
     public void update() {
         gameObjects.forEach(GameObject::update);
-
-        if (window.isKeyDown("W")) {
-            System.out.println("test");
-        }
     }
 
     @Override
